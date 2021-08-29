@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'ArchitectsDaughter';
+  src: url('../assets/fonts/ArchitectsDaughter-Regular.woff') format('woff');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'ArchitectsDaughter';
+  src: url('../assets/fonts/ArchitectsDaughter-Regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}

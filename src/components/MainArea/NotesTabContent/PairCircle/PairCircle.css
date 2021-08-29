@@ -1,0 +1,32 @@
+.string-circle,
+.note-circle {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.string-circle {
+  background-color: white;
+  color: black;
+  width: 290px;
+  height: 290px;
+}
+
+.string-text {
+  font-size: 50px;
+  position: absolute;
+  top: 5%;
+}
+
+.note-circle {
+  background-color: var(--dark-secondary);
+  color: white;
+  width: 150px;
+  height: 150px;
+}
+
+.note-text {
+  font-size: 90px;
+}
