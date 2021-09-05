@@ -1,9 +1,6 @@
 import React from 'react';
-
 import { Tab } from 'components/ModeTabs/ModeTabs';
-
-import './MainArea.css';
-
+import styles from './MainArea.module.css';
 import NotesTabContent from './NotesTabContent/NotesTabContent';
 import ChordsTabContent from './ChordsTabContent/ChordsTabContent';
 
@@ -16,7 +13,7 @@ export default function MainArea({ tab }: { tab: Tab }) {
   const CurrentDisplay = displays[tab];
 
   return (
-    <div className="app-main-area">
+    <div className={styles.wrapper}>
       <CurrentDisplay />
     </div>
   );

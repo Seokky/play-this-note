@@ -7,28 +7,13 @@ body,
 
 .app {
   background-color: var(--dark-primary);
-  max-width: 375px;
+
+  /* max-width: 375px; */
+  max-height: 700px;
   margin: 0 auto;
   padding: 20px 27px;
   padding-top: 30px;
-  font-family: 'ArchitectsDaughter';
+  font-family: var(--font-family-main);
   display: flex;
   flex-direction: column;
-}
-
-.app-button {
-  border: none;
-  border-radius: 15px;
-  color: black;
-  background-color: white;
-  font-size: 24px;
-  font-family: 'ArchitectsDaughter';
-}
-
-.app-button:active {
-  transform: translateY(1px);
-}
-
-.app-button--secondary {
-  background-color: var(--accent-primary);
 }

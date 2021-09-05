@@ -1,4 +1,4 @@
-.app-mode-tabs {
+.wrapper {
   background-color: var(--dark-secondary);
   padding: 12px 15px;
   border-radius: 15px;
@@ -6,16 +6,16 @@
   margin-bottom: 15px;
 }
 
-.app-mode-tabs .app-button {
+.wrapper button {
   flex-grow: 1;
   flex-basis: 50%;
   padding: 4px 0;
 }
 
-.app-mode-tabs .app-button:first-of-type {
+.wrapper button:first-of-type {
   margin-right: 6px;
 }
 
-.app-mode-tabs .app-button:last-of-type {
+.wrapper button:last-of-type {
   margin-left: 6px;
 }

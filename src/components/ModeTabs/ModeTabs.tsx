@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
-import './ModeTabs.css';
+import styles from './ModeTabs.module.css';
+import AppButton from 'components/AppButton/AppButton';
 
 export type Tab = 'notes' | 'chords';
 
-export default function ModeTabs({ onTabChanged }: { onTabChanged: (tab: Tab) => void }) {
+type Props = {
+  onTabChanged: (tab: Tab) => void;
+}
+
+export default function ModeTabs({ onTabChanged }: Props) {
   const [currentTab, setTab] = useState('notes');
 
   const onTabClick = (tab: Tab) => {
@@ -11,19 +16,17 @@ export default function ModeTabs({ onTabChanged }: { onTabChanged: (tab: Tab) =>
     onTabChanged(tab);
   };
 
-  const getTabClasses = (tab: Tab) => {
-    return currentTab === tab ? 'app-button app-button--secondary' : 'app-button';
-  };
-
   return (
-    <div className="app-mode-tabs">
-      <button className={getTabClasses('notes')} onClick={() => onTabClick('notes')}>
+    <div className={styles.wrapper}>
+      <AppButton secondary={currentTab === 'notes'}
+                 onClick={() => onTabClick('notes')}>
         Notes
-      </button>
+      </AppButton>
 
-      <button className={getTabClasses('chords')} onClick={() => onTabClick('chords')}>
+      <AppButton secondary={currentTab === 'chords'}
+                 onClick={() => onTabClick('chords')}>
         Chords
-      </button>
+      </AppButton>
     </div>
   );
 }

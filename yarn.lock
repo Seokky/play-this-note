@@ -3853,6 +3853,11 @@ clone-regexp@^2.1.0:
   dependencies:
     is-regexp "^2.0.0"
 
+clsx@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.1.1.tgz#98b3134f9abbdf23b2663491ace13c5c03a73188"
+  integrity sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==
+
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -12655,6 +12660,11 @@ tty-browserify@0.0.0:
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
   integrity sha1-oVe6QC2iTpv5V/mqadUk7tQpAaY=
 
+tunajs@^1.0.8:
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/tunajs/-/tunajs-1.0.13.tgz#6aa3d9ca3c40b70d0361b6c47f28e51bc605af02"
+  integrity sha512-FSxFGRBJzm4ogcXOvfg48OVLkCkxukV5ks6KcdiMMDr1YGqOuHFolAOHCvz4awzia90XxEMuEzxj/ptAV3Sl/g==
+
 tunnel-agent@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.6.0.tgz#27a5dea06b36b04a0a9966774b290868f0fc40fd"
@@ -13136,6 +13146,13 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   integrity sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==
   dependencies:
     minimalistic-assert "^1.0.0"
+
+web-audio-daw@^4.11.0:
+  version "4.11.0"
+  resolved "https://registry.yarnpkg.com/web-audio-daw/-/web-audio-daw-4.11.0.tgz#75d6c5aa31df30d995f4baadf754aa0cea030f2a"
+  integrity sha512-BgwJScAjOJyPU8p8NzUjD/p8GfpoWiBt+8VeSnw8D/hGu5pB09Ec7TUXtAkjESarHFiqZCnr/CF1asbZHyITJw==
+  dependencies:
+    tunajs "^1.0.8"
 
 web-vitals@^1.0.1:
   version "1.1.2"

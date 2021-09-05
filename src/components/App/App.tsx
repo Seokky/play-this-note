@@ -6,7 +6,7 @@ import 'styles/root.css';
 
 import './App.css';
 
-import Header from 'components/Header/Header';
+import AppHeader from 'components/AppHeader/AppHeader';
 import ModeTabs, { Tab } from 'components/ModeTabs/ModeTabs';
 import MainArea from 'components/MainArea/MainArea';
 
@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className="app">
-      <Header />
+      <AppHeader />
 
       <ModeTabs onTabChanged={onTabChanged} />
 

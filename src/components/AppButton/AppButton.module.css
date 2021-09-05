@@ -1,0 +1,16 @@
+.wrapper {
+  border: none;
+  border-radius: 15px;
+  color: black;
+  background-color: white;
+  font-size: 24px;
+  font-family: var(--font-family-main);
+}
+
+.wrapper:active {
+  transform: translateY(1px);
+}
+
+.wrapper--secondary {
+  background-color: var(--accent-primary);
+}

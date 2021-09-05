@@ -1,31 +1,102 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
+import Wad from 'web-audio-daw';
 
-import { STRINGS, NOTES } from 'app-constants';
+import { GuitarString } from 'types/GuitarString';
 
+import styles from './NotesTabContent.module.css';
+
+import AppButton from 'components/AppButton/AppButton';
 import PairCircle from './PairCircle/PairCircle';
+import Caption from './Caption/Caption';
 
-export default function NotesTabContent() {
-  const [string, setString] = useState<string>('A');
-  const [note, setNote] = useState<string>('A');
+import { STRINGS } from 'app-constants';
+import { getRandomString, getRandomNote } from 'helpers/random';
 
-  const getRandomNumber = (max: number) => Math.floor(Math.random() * Math.floor(max));
+const voice = new Wad({ source : 'mic' });
+const tuner = new (Wad as any).Poly();
+tuner.setVolume(0);
+tuner.add(voice);
 
-  const getRandomString = () => STRINGS[getRandomNumber(STRINGS.length)];
+type State = {
+  string: GuitarString;
+  noteToPlay: string;
+  playing: boolean;
+  notePlaying: undefined | string;
+}
+export default class NotesTabContent extends Component<{}, State> {
+  state: State = {
+    string: STRINGS[0],
+    noteToPlay: STRINGS[0],
+    playing: false,
+    notePlaying: undefined as string | undefined
+  }
 
-  const getRandomNote = () => NOTES[getRandomNumber(NOTES.length)];
+  render() {
+    return (
+      <div>
+        { this.state.notePlaying } { ' ' } { this.state.noteToPlay }
+        <PairCircle string={this.state.string}
+                    note={this.state.noteToPlay} />
 
-  const getRandomPair = () => {
-    setString(getRandomString());
-    setNote(getRandomNote());
-  };
+        <div className={styles.caption}>
+          <Caption string={this.state.string}
+                   note={this.state.noteToPlay} />
+        </div>
 
-  return (
-    <div>
-      <PairCircle string={string} note={note} />
+        <div className={styles.btn}>
+          <AppButton onClick={this.togglePause}>
+            { this.state.playing ? 'Stop' : 'Start' }
+          </AppButton>
+        </div>
+      </div>
+    );
+  }
 
-      <button className="app-button" onClick={getRandomPair}>
-        Generate
-      </button>
-    </div>
-  );
+  getRandomPair = () => {
+    const string = getRandomString();
+
+    this.setState(
+      (state) => ({
+        string,
+        noteToPlay: getRandomNote(string)
+      })
+    );
+  }
+
+  togglePause = () => {
+    this.setState(
+      (state) => ({ playing: !state.playing }),
+      () => {
+        if (this.state.playing) {
+          this.startListening();
+        } else {
+          this.stopListening();
+        }
+      }
+    );
+  }
+
+  startListening = () => {
+    this.getRandomPair();
+    voice.play();
+    tuner.updatePitch();
+    this.logPitch();
+  }
+
+  stopListening = () => {
+    voice.stop();
+    tuner.stopUpdatingPitch();
+  }
+
+  logPitch = () => {
+    // console.log('logPitch(): ', tuner.pitch, tuner.noteName);
+    this.setState((state) => ({ notePlaying: tuner.noteName }));
+
+    console.log(tuner.noteName, this.state.noteToPlay, tuner.noteName === this.state.noteToPlay);
+    if (tuner.noteName === this.state.noteToPlay) {
+      this.getRandomPair();
+    }
+
+    if (this.state.playing) requestAnimationFrame(this.logPitch);
+  }
 }
