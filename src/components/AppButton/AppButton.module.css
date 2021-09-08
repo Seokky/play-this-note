@@ -1,10 +1,16 @@
 .wrapper {
-  border: none;
-  border-radius: 15px;
-  color: black;
-  background-color: white;
-  font-size: 24px;
   font-family: var(--font-family-main);
+  border: 2px solid var(--button-border-color);
+  border-radius: var(--button-border-radius);
+  background-color: var(--background-accent-color);
+  color: var(--text-main-color);
+  font-size: 18px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.wrapper:hover {
+  cursor: pointer;
 }
 
 .wrapper:active {
@@ -12,5 +18,5 @@
 }
 
 .wrapper--secondary {
-  background-color: var(--accent-primary);
+  background-color: var(--background-dark-color);
 }
