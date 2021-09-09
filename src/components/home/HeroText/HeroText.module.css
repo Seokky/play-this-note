@@ -1,0 +1,13 @@
+.wrapper {
+  font-size: 22px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  padding: 35px 0;
+  padding-bottom: 53px;
+  max-width: 260px;
+}
+
+.bold {
+  font-weight: 700;
+}

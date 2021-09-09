@@ -17,7 +17,7 @@
     // "react/jsx-indent": ["error", 2],
     // "react/jsx-first-prop-new-line": "always",
     "react/jsx-indent-props": [2, "first"],
-    "react/jsx-max-props-per-line": [1, { "maximum": 1 }],
+    // "react/jsx-max-props-per-line": [1, { "maximum": 1 }],
     "semi": [2, "always"],
     "object-curly-spacing": ["warn", "always"],
     "no-unused-vars": [

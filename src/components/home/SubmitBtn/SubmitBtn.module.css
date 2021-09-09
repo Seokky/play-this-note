@@ -1,0 +1,15 @@
+.wrapper {
+  display: block;
+  margin: 0 auto;
+  margin-top: 35px;
+  text-align: center;
+}
+
+.wrapper button {
+  padding-left: 33px;
+  padding-right: 33px;
+}
+
+.img {
+  margin-right: 12px;
+}

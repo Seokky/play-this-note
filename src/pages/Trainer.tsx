@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import Wad from 'web-audio-daw';
 
+/* types */
 import { GuitarString } from 'types/GuitarString';
 
-import styles from './NotesTabContent.module.css';
-
-import AppButton from 'components/AppButton/AppButton';
-import PairCircle from './PairCircle/PairCircle';
-import Caption from './Caption/Caption';
-
+/* constants */
 import { STRINGS } from 'app-constants';
+
+/* helpers */
 import { getRandomString, getRandomNote } from 'helpers/random';
+
+/* libs */
+import Wad from 'web-audio-daw';
 
 const voice = new Wad({ source : 'mic' });
 const tuner = new (Wad as any).Poly();
@@ -23,7 +23,8 @@ type State = {
   playing: boolean;
   notePlaying: undefined | string;
 }
-export default class NotesTabContent extends Component<{}, State> {
+
+export default class Trainer extends Component<{}, State> {
   state: State = {
     string: STRINGS[0],
     noteToPlay: STRINGS[0],
@@ -33,24 +34,10 @@ export default class NotesTabContent extends Component<{}, State> {
 
   render() {
     return (
-      <div>
-        { this.state.notePlaying } { ' ' } { this.state.noteToPlay }
-        <PairCircle string={this.state.string}
-                    note={this.state.noteToPlay} />
-
-        <div className={styles.caption}>
-          <Caption string={this.state.string}
-                   note={this.state.noteToPlay} />
-        </div>
-
-        <div className={styles.btn}>
-          <AppButton onClick={this.togglePause}>
-            { this.state.playing ? 'Stop' : 'Start' }
-          </AppButton>
-        </div>
-      </div>
+      <div className="app-container">trainer</div>
     );
   }
+
 
   getRandomPair = () => {
     const string = getRandomString();

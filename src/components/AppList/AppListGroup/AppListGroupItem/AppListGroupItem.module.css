@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  padding: 6px var(--padding-side);
+}
+
+.wrapper--checked {
+  background-color: var(--background-main-color);
+}
+
+.circle {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--text-main-color);
+  border-radius: 100%;
+}
+
+.wrapper--checked .circle {
+  border: none;
+  background-color: var(--background-accent-color);
+}

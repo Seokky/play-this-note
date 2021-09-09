@@ -1,0 +1,18 @@
+.wrapper--expanded img {
+  transform: rotate(180deg);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  padding: 10px var(--padding-side);
+  border: 1px solid var(--list-item-border-color);
+  border-radius: var(--list-item-border-radius);
+}
+
+.items {
+  margin-top: 5px;
+  margin-left: 30px;
+}

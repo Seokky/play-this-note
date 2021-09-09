@@ -20,3 +20,7 @@
 .wrapper--secondary {
   background-color: var(--background-dark-color);
 }
+
+.wrapper--grow {
+  width: 100%;
+}

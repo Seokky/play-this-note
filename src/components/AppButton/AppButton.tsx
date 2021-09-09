@@ -4,14 +4,16 @@ import styles from './AppButton.module.css';
 
 type Props = {
   secondary?: boolean;
-  onClick: MouseEventHandler;
+  grow?: boolean;
+  onClick?: MouseEventHandler;
   children: JSX.Element | string;
 };
 
 export default function AppButton(props: Props) {
   const classNames = clsx([
     styles.wrapper,
-    props.secondary && styles['wrapper--secondary']
+    props.secondary && styles['wrapper--secondary'],
+    props.grow && styles['wrapper--grow']
   ]);
 
   return (

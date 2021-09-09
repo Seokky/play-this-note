@@ -8,7 +8,7 @@
   --background-dark-color: #1a1a1d;
   --background-main-color: #6f2232;
   --background-main-dimmed-color: rgba(var(--background-main-color), 0.3);
-  --background-accent-color: #c3073f;
+  --background-accent-color: #950740;
 
   /* text colors */
 
@@ -16,13 +16,14 @@
   --text-main-color: #fff;
 
   /* accent colors */
+
   --success-color: #70cb7a;
   --error-color: #ff5858;
 
   /* border colors */
 
-  --button-border-color: #c3073f;
-  --input-border-color: #c3073f;
+  --button-border-color: #950740;
+  --input-border-color: #950740;
   --list-item-border-color: #950740;
   --legend-border-color: #6f2232;
 
@@ -30,15 +31,9 @@
 
   --button-border-radius: 15px;
   --input-border-radius: 3px;
-  --list-item-border-radius: 3px;
+  --list-item-border-radius: 5px;
   --legend-border-radius: 5px;
 
   /* paddings */
   --padding-side: 10px;
-
-  /* old */
-
-  --dark-primary: #363636;
-  --dark-secondary: #4e4e4e;
-  --accent-primary: #ffd66c;
 }
