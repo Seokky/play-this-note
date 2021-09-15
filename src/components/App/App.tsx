@@ -4,7 +4,7 @@ import 'assets/styles/reset.css';
 import 'assets/styles/fontface.css';
 import 'assets/styles/root.css';
 
-import './App.css';
+import 'assets/styles/components/app/App.css';
 
 import {
   BrowserRouter as Router,
@@ -12,7 +12,7 @@ import {
   Route,
 } from "react-router-dom";
 
-import AppHeader from 'components/AppHeader/AppHeader';
+import AppHeader from 'components/app/AppHeader';
 import Home from 'pages/Home';
 import Trainer from 'pages/Trainer';
 import CreateSetOfNotes from 'pages/CreateSetOfNotes';

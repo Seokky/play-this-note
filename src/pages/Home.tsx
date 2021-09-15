@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import HeroText from 'components/home/HeroText/HeroText';
-import ListOfNotesSets from 'components/home/ListOfNotesSets/ListOfNotesSets';
-import SubmitBtn from 'components/home/SubmitBtn/SubmitBtn';
+import HeroText from 'components/home/HeroText';
+import ListOfNotesSets from 'components/home/ListOfNotesSets';
+import SubmitBtn from 'components/home/SubmitBtn';
 
 export default class NotesTabContent extends Component {
   render() {

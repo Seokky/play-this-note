@@ -1,7 +1,7 @@
 import React from 'react';
 import settingsIcon from 'assets/icons/settings.svg';
-import styles from './AppHeader.module.css';
-import AppButton from 'components/AppButton/AppButton';
+import styles from 'assets/styles/components/app/AppHeader.module.css';
+import AppButton from 'components/app/AppButton';
 
 export default function AppHeader() {
   return (

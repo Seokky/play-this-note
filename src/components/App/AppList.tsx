@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 import { AppList as TAppList } from 'types/AppList';
 
-import styles from './AppList.module.css';
+import styles from 'assets/styles/components/app/AppList.module.css';
 
-import AppListGroup from './AppListGroup/AppListGroup';
+import AppListGroup from './AppListGroup';
 
 type Props = {
   list: TAppList;

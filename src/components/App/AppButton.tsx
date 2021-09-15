@@ -1,6 +1,6 @@
 import React, { MouseEventHandler } from 'react';
 import clsx from 'clsx';
-import styles from './AppButton.module.css';
+import styles from 'assets/styles/components/app/AppButton.module.css';
 
 type Props = {
   secondary?: boolean;

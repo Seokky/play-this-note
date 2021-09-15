@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 import { AppListGroupItem as TAppListGroupItem } from 'types/AppListGroupItem';
 
-import styles from './AppListGroupItem.module.css';
+import styles from 'assets/styles/components/app/AppListGroupItem.module.css';
 
 type Props = {
   item: TAppListGroupItem;

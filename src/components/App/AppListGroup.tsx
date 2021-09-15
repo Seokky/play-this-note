@@ -3,10 +3,12 @@ import clsx from 'clsx';
 
 import { AppListGroup as TAppListGroup } from 'types/AppListGroup';
 
-import angleSvg from 'assets/icons/angle-down.svg';
-import styles from './AppListGroup.module.css';
+import { store } from 'store';
 
-import AppListGroupItem from './AppListGroupItem/AppListGroupItem';
+import angleSvg from 'assets/icons/angle-down.svg';
+import styles from 'assets/styles/components/app/AppListGroup.module.css';
+
+import AppListGroupItem from './AppListGroupItem';
 
 type Props = {
   group: TAppListGroup
@@ -52,6 +54,6 @@ export default class AppListGroup extends Component<Props> {
   }
 
   onClick = () => {
-    //
+    store.state.listOfNotesSets[0].expanded = true;
   }
 }

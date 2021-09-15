@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
 import plusSvg from 'assets/icons/plus.svg';
-import styles from './CreateSetOfNotesBtn.module.css';
+import styles from 'assets/styles/components/home/CreateSetOfNotesBtn.module.css';
 
 import { Link } from 'react-router-dom';
 
-import AppButton from 'components/AppButton/AppButton';
+import AppButton from 'components/app/AppButton';
 
 export default class CreateSetOfNotesBtn extends Component {
   render() {

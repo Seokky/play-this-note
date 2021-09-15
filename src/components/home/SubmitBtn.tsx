@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
 import arrowRightSvg from 'assets/icons/arrow-right.svg';
-import styles from './SubmitBtn.module.css';
+import styles from 'assets/styles/components/home/SubmitBtn.module.css';
 
 import { Link } from 'react-router-dom';
 
-import AppButton from 'components/AppButton/AppButton';
+import AppButton from 'components/app/AppButton';
 
 export default class SubmitBtn extends Component {
   render() {

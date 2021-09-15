@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './HeroText.module.css';
+import styles from 'assets/styles/components/home/HeroText.module.css';
 
 export default class HeroText extends Component {
   render() {
