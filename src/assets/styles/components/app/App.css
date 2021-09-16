@@ -23,6 +23,10 @@ body {
   align-items: center;
 }
 
+a {
+  text-decoration: none;
+}
+
 .app {
   min-width: 320px;
   max-width: 450px;

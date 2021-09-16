@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
+import { RootState } from 'types/RootState';
 import { AppList as TAppList } from 'types/AppList';
-
-import { store } from 'store';
-
+import { connect } from "react-redux";
 import styles from 'assets/styles/components/home/ListOfNotesSets.module.css';
-
 import AppList from 'components/app/AppList';
 
-type State = {
-  list: TAppList;
+type Props = {
+  sets: TAppList
 }
-
-export default class ListOfNotesSets extends Component<{}, State> {
-  state: State = {
-    list: store.state.listOfNotesSets,
-  }
-
+class ListOfNotesSets extends Component<Props> {
   render() {
     return (
       <div className={styles.wrapper}>
-        <AppList list={this.state.list} />
+        <AppList list={this.props.sets} />
       </div>
     );
   }
 }
+
+const mapStateToProps = (state: RootState): Props => ({
+  sets: state.sets.sets
+});
+
+export default connect(mapStateToProps)(ListOfNotesSets);

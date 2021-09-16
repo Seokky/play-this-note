@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { expandListGroup } from "store/setsSlice";
 import clsx from 'clsx';
-
 import { AppListGroup as TAppListGroup } from 'types/AppListGroup';
-
-import { store } from 'store';
-
 import angleSvg from 'assets/icons/angle-down.svg';
 import styles from 'assets/styles/components/app/AppListGroup.module.css';
 
@@ -12,25 +10,22 @@ import AppListGroupItem from './AppListGroupItem';
 
 type Props = {
   group: TAppListGroup
+  expandListGroup: typeof expandListGroup,
 }
 
-export default class AppListGroup extends Component<Props> {
+class AppListGroup extends Component<Props> {
   render() {
-    const { title, expanded } = this.props.group;
-
     const hasItems = this.props.group.items.length > 0;
 
-    const angleIcon = (
-      hasItems && <img src={angleSvg} alt="expand" />
-    );
+    const angleIcon = (hasItems && <img src={angleSvg} alt="expand" />);
 
     const items = (
       hasItems &&
-      expanded &&
+      this.props.group.expanded &&
       <div className={styles.items}>
         {
-          this.props.group.items.map(
-            (i) => <AppListGroupItem key={i.title} item={i} />
+          this.props.group.items.map((i) =>
+            <AppListGroupItem key={i.title} item={i} />
           )
         }
       </div>
@@ -38,13 +33,13 @@ export default class AppListGroup extends Component<Props> {
 
     const wrapperClassNames = clsx([
       styles.wrapper,
-      expanded && styles['wrapper--expanded']
+      this.props.group.expanded && styles['wrapper--expanded']
     ]);
 
     return (
       <div className={wrapperClassNames} onClick={this.onClick}>
         <div className={styles.title}>
-          { title }
+          { this.props.group.title }
           { angleIcon }
         </div>
 
@@ -54,6 +49,10 @@ export default class AppListGroup extends Component<Props> {
   }
 
   onClick = () => {
-    store.state.listOfNotesSets[0].expanded = true;
+    this.props.expandListGroup(this.props.group.title);
   }
 }
+
+const mapDispatchToProps = { expandListGroup };
+
+export default connect(null, mapDispatchToProps)(AppListGroup);

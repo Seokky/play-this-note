@@ -1,4 +1,6 @@
 import React from 'react';
+import { Provider } from "react-redux";
+import store from "store";
 
 import 'assets/styles/reset.css';
 import 'assets/styles/fontface.css';
@@ -19,23 +21,25 @@ import CreateSetOfNotes from 'pages/CreateSetOfNotes';
 
 function App() {
   return (
-    <Router>
-      <div className="app">
-        <AppHeader />
+    <Provider store={store}>
+      <Router>
+        <div className="app">
+          <AppHeader />
 
-        <Switch>
-          <Route path="/trainer">
-            <Trainer />
-          </Route>
-          <Route path="/create-own-set">
-            <CreateSetOfNotes />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+          <Switch>
+            <Route path="/trainer">
+              <Trainer />
+            </Route>
+            <Route path="/create-own-set">
+              <CreateSetOfNotes />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </Provider>
   );
 }
 
