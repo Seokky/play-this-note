@@ -1,13 +1,27 @@
 .wrapper {
-  font-size: 22px;
+  font-size: 18px;
   text-align: center;
   display: block;
   margin: 0 auto;
-  padding: 35px 0;
-  padding-bottom: 53px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   max-width: 260px;
 }
 
 .bold {
   font-weight: 700;
+}
+
+@media screen and (min-height: 600px) {
+  .wrapper {
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (min-height: 700px) {
+  .wrapper {
+    font-size: 22px;
+  }
 }

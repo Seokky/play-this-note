@@ -10,16 +10,18 @@ import AppButton from 'components/app/AppButton';
 export default class CreateSetOfNotesBtn extends Component {
   render() {
     return (
-      <Link to="/create-own-set">
-        <AppButton grow>
-          <>
-            <img className={styles.img}
-                 src={plusSvg}
-                 alt="plus icon" />
-            Создать свой набор
-          </>
-        </AppButton>
-      </Link>
+      <div className={styles.wrapper}>
+        <Link to="/create-own-set">
+          <AppButton grow>
+            <>
+              <img className={styles.img}
+                   src={plusSvg}
+                   alt="plus icon" />
+              Создать свой набор
+            </>
+          </AppButton>
+        </Link>
+      </div>
     );
   }
 }

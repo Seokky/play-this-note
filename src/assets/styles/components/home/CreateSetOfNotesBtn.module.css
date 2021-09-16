@@ -1,3 +1,9 @@
+.wrapper {
+  width: calc(100% - var(--padding-side) * 2);
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
 .img {
   margin-right: 12px;
 }

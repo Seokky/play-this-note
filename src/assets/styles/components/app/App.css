@@ -3,30 +3,35 @@ body,
 #root,
 .app {
   height: 100%;
+  width: 100%;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 body {
   line-height: 1.3;
   font-family: var(--font-family-main);
   color: var(--text-main-color);
-  overflow: hidden;
+  overflow: auto;
+  background-color: #2b0817;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .app {
+  min-width: 320px;
+  max-width: 450px;
+  max-height: 850px;
   background-color: var(--background-dark-color);
   padding: 0 var(--padding-side);
-
-  /* max-width: 375px; */
-
-  /* max-height: 700px;
-  margin: 0 auto;
-  padding: 20px 27px;
-  padding-top: 30px;
   display: flex;
-  flex-direction: column; */
-}
-
-.app-container {
-  max-width: 355px;
-  margin: 0 auto;
+  flex-direction: column;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
 }

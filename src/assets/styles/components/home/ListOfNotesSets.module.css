@@ -1,9 +1,5 @@
 .wrapper {
-  border: 2px solid var(--legend-border-color);
-  border-radius: var(--legend-border-radius);
-  padding: var(--padding-side);
-}
-
-.btn {
-  margin-top: calc(-17px - var(--padding-side));
+  border-top: 2px solid var(--legend-border-color);
+  border-bottom: 2px solid var(--legend-border-color);
+  overflow: auto;
 }
