@@ -3,21 +3,27 @@
   align-items: center;
   justify-content: space-between;
   font-size: 16px;
-  padding: 6px var(--padding-side);
+  padding: 10px var(--padding-side);
 }
 
 .wrapper--checked {
   background-color: var(--background-main-color);
 }
 
+.title {
+  padding-right: 4px;
+}
+
 .circle {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border: 2px solid var(--text-main-color);
   border-radius: 100%;
+  opacity: 0.7;
 }
 
 .wrapper--checked .circle {
   border: none;
   background-color: var(--background-accent-color);
+  opacity: 1;
 }

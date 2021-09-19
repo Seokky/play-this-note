@@ -18,7 +18,7 @@ export default class AppListGroupItem extends Component<Props> {
   render() {
     return (
       <div className={this.classNames}>
-        <span>{ this.props.item.title }</span>
+        <span className={styles.title}>{ this.props.item.title }</span>
         <span className={styles.circle} />
       </div>
     );

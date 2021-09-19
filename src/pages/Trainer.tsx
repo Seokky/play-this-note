@@ -1,15 +1,5 @@
-import React, { Component } from 'react';
-
-/* types */
-import { GuitarString } from 'types/GuitarString';
-
-/* constants */
-import { STRINGS } from 'app-constants';
-
-/* helpers */
-import { getRandomString, getRandomNote } from 'helpers/random';
-
-/* libs */
+import React, { useEffect, useRef, useState } from 'react';
+import { getRandomNote } from 'helpers/random';
 import Wad from 'web-audio-daw';
 
 const voice = new Wad({ source : 'mic' });
@@ -17,73 +7,77 @@ const tuner = new (Wad as any).Poly();
 tuner.setVolume(0);
 tuner.add(voice);
 
-type State = {
-  string: GuitarString;
-  noteToPlay: string;
-  playing: boolean;
-  notePlaying: undefined | string;
-}
+export default function Trainer() {
+  const [playing, setPlaying] = useState(false);
+  const playingRef = useRef(playing);
 
-export default class Trainer extends Component<{}, State> {
-  state: State = {
-    string: STRINGS[0],
-    noteToPlay: STRINGS[0],
-    playing: false,
-    notePlaying: undefined as string | undefined
-  }
+  const [noteToPlay, setNoteToPlay] = useState('C0');
+  const [notePlaying, setNotePlaying] = useState('');
 
-  render() {
-    return (
-      <div className="app-container">trainer</div>
-    );
-  }
+  const notePlayingUpdatedAt = useRef(Date.now());
 
+  const goToTheNextStep = () => {
+    setNoteToPlay(getRandomNote());
+  };
 
-  getRandomPair = () => {
-    const string = getRandomString();
+  const togglePause = () => {
+    playingRef.current = !playingRef.current;
+    setPlaying((prevPlaying) => !prevPlaying);
+  };
 
-    this.setState(
-      (state) => ({
-        string,
-        noteToPlay: getRandomNote(string)
-      })
-    );
-  }
+  useEffect(() => {
+    const startListening = () => {
+      goToTheNextStep();
+      voice.play();
+      tuner.updatePitch();
+      logPitch();
+    };
 
-  togglePause = () => {
-    this.setState(
-      (state) => ({ playing: !state.playing }),
-      () => {
-        if (this.state.playing) {
-          this.startListening();
-        } else {
-          this.stopListening();
-        }
+    const stopListening = () => {
+      resetTunerPitchInfo();
+      voice.stop();
+      tuner.stopUpdatingPitch();
+    };
+
+    const logPitch = () => {
+      setNotePlaying(tuner.noteName || '');
+
+      if ((Date.now() - notePlayingUpdatedAt.current) >= 2000) {
+        resetTunerPitchInfo();
       }
-    );
-  }
 
-  startListening = () => {
-    this.getRandomPair();
-    voice.play();
-    tuner.updatePitch();
-    this.logPitch();
-  }
+      if (playingRef.current) {
+        requestAnimationFrame(logPitch);
+      }
+    };
 
-  stopListening = () => {
-    voice.stop();
-    tuner.stopUpdatingPitch();
-  }
+    const resetTunerPitchInfo = () => {
+      tuner.noteName = undefined;
+      tuner.pitch = undefined;
+    };
 
-  logPitch = () => {
-    // console.log('logPitch(): ', tuner.pitch, tuner.noteName);
-    this.setState((state) => ({ notePlaying: tuner.noteName }));
-
-    console.log(tuner.noteName, this.state.noteToPlay, tuner.noteName === this.state.noteToPlay);
-    if (tuner.noteName === this.state.noteToPlay) {
-      this.getRandomPair();
+    if (playing) {
+      startListening();
+    } else {
+      stopListening();
     }
+  }, [playing]);
 
-    if (this.state.playing) requestAnimationFrame(this.logPitch);
-  }
+  useEffect(() => {
+    notePlayingUpdatedAt.current = Date.now();
+
+    if (notePlaying === noteToPlay) {
+      goToTheNextStep();
+    }
+  }, [notePlaying, noteToPlay]);
+
+  return (
+    <div className="app-container">
+      <div>note to play: { noteToPlay }</div>
+      <div>note playing: { notePlaying }</div>
+      <button onClick={togglePause}>
+        { playing ? 'stop' : 'start' }
+      </button>
+    </div>
+  );
 }

@@ -5,5 +5,4 @@ export const getRandomNumber = (max: number) => Math.floor(Math.random() * Math.
 
 export const getRandomString = () => STRINGS[getRandomNumber(STRINGS.length)];
 
-export const getRandomNote = (string: GuitarString) =>
-  NOTES[string][getRandomNumber(NOTES[string].length)];
+export const getRandomNote = () => NOTES[getRandomNumber(NOTES.length)];
