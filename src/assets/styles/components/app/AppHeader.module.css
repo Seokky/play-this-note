@@ -10,6 +10,19 @@
   color: white;
 }
 
+.back button {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back button img {
+  height: 12px;
+  transform: rotate(90deg);
+}
+
 .settings button {
   height: 40px;
   width: 40px;
