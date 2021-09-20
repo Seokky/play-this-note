@@ -1,6 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { togglePlaying, setNotePlaying, setNoteToPlay } from 'store/trainerSlice';
+import { RootState } from 'types/RootState';
+import styles from 'assets/styles/components/trainer/Trainer.module.css';
 import { getRandomNote } from 'helpers/random';
 import Wad from 'web-audio-daw';
+import PairOfNotes from 'components/trainer/PairOfNotes';
 
 const voice = new Wad({ source : 'mic' });
 const tuner = new (Wad as any).Poly();
@@ -8,21 +13,19 @@ tuner.setVolume(0);
 tuner.add(voice);
 
 export default function Trainer() {
-  const [playing, setPlaying] = useState(false);
-  const playingRef = useRef(playing);
+  const dispatch = useDispatch();
 
-  const [noteToPlay, setNoteToPlay] = useState('C0');
-  const [notePlaying, setNotePlaying] = useState('');
+  const playing = useSelector((state: RootState) => state.trainer.playing);
+  const noteToPlay = useSelector((state: RootState) => state.trainer.noteToPlay);
+  const notePlaying = useSelector((state: RootState) => state.trainer.notePlaying);
+  const playingRef = useRef(playing);
 
   const notePlayingUpdatedAt = useRef(Date.now());
 
   const goToTheNextStep = () => {
-    setNoteToPlay(getRandomNote());
-  };
-
-  const togglePause = () => {
-    playingRef.current = !playingRef.current;
-    setPlaying((prevPlaying) => !prevPlaying);
+    dispatch(
+      setNoteToPlay(getRandomNote())
+    );
   };
 
   useEffect(() => {
@@ -40,9 +43,9 @@ export default function Trainer() {
     };
 
     const logPitch = () => {
-      setNotePlaying(tuner.noteName || '');
+      dispatch(setNotePlaying(tuner.noteName || ''));
 
-      if ((Date.now() - notePlayingUpdatedAt.current) >= 2000) {
+      if ((Date.now() - notePlayingUpdatedAt.current) >= 500) {
         resetTunerPitchInfo();
       }
 
@@ -55,6 +58,8 @@ export default function Trainer() {
       tuner.noteName = undefined;
       tuner.pitch = undefined;
     };
+
+    playingRef.current = playing;
 
     if (playing) {
       startListening();
@@ -72,12 +77,8 @@ export default function Trainer() {
   }, [notePlaying, noteToPlay]);
 
   return (
-    <div className="app-container">
-      <div>note to play: { noteToPlay }</div>
-      <div>note playing: { notePlaying }</div>
-      <button onClick={togglePause}>
-        { playing ? 'stop' : 'start' }
-      </button>
+    <div className={styles.wrapper}>
+      <PairOfNotes />
     </div>
   );
 }

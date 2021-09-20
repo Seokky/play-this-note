@@ -1,0 +1,11 @@
+.wrapper {
+  border-radius: 100px 100px 0 0;
+  border: 2px solid var(--background-accent-color);
+  background-color: var(--background-main-color);
+  font-size: 70px;
+  font-weight: 700;
+  line-height: 100%;
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 17px;
+}

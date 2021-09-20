@@ -1,0 +1,8 @@
+.wrapper {
+  width: 213px;
+  height: 430px;
+  margin: 0 auto;
+  margin-top: 45px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
