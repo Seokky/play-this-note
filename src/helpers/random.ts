@@ -1,8 +1,5 @@
-import { GuitarString } from 'types/GuitarString';
-import { STRINGS, NOTES } from 'app-constants';
+import { NOTES } from 'app-constants/notes';
 
 export const getRandomNumber = (max: number) => Math.floor(Math.random() * Math.floor(max));
 
-export const getRandomString = () => STRINGS[getRandomNumber(STRINGS.length)];
-
-export const getRandomNote = () => NOTES[getRandomNumber(NOTES.length)];
+export const getRandomNote = () => NOTES.ALL[getRandomNumber(NOTES.ALL.length)];

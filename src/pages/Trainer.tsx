@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { togglePlaying, setNotePlaying, setNoteToPlay } from 'store/trainerSlice';
-import { RootState } from 'types/RootState';
-import styles from 'assets/styles/components/trainer/Trainer.module.css';
-import { getRandomNote } from 'helpers/random';
 import Wad from 'web-audio-daw';
+import { RootState } from 'types/RootState';
+import { getRandomNote } from 'helpers/random';
+import { setNotePlaying, setNoteToPlay } from 'store/trainerSlice';
+import styles from 'assets/styles/components/trainer/Trainer.module.css';
 import PairOfNotes from 'components/trainer/PairOfNotes';
 
-const voice = new Wad({ source : 'mic' });
+const voice = new Wad({ source: 'mic' });
 const tuner = new (Wad as any).Poly();
 tuner.setVolume(0);
 tuner.add(voice);
@@ -15,23 +15,21 @@ tuner.add(voice);
 export default function Trainer() {
   const dispatch = useDispatch();
 
-  const playing = useSelector((state: RootState) => state.trainer.playing);
-  const noteToPlay = useSelector((state: RootState) => state.trainer.noteToPlay);
-  const notePlaying = useSelector((state: RootState) => state.trainer.notePlaying);
+  const playing = useSelector(({ trainer }: RootState) => trainer.playing);
+  const noteToPlay = useSelector(({ trainer }: RootState) => trainer.noteToPlay);
+  const notePlaying = useSelector(({ trainer }: RootState) => trainer.notePlaying);
   const playingRef = useRef(playing);
 
   const notePlayingUpdatedAt = useRef(Date.now());
 
   const goToTheNextStep = () => {
-    dispatch(
-      setNoteToPlay(getRandomNote())
-    );
+    dispatch(setNoteToPlay(getRandomNote()));
   };
 
   useEffect(() => {
-    const startListening = () => {
+    const startListening = async () => {
       goToTheNextStep();
-      voice.play();
+      await voice.play();
       tuner.updatePitch();
       logPitch();
     };
@@ -43,9 +41,13 @@ export default function Trainer() {
     };
 
     const logPitch = () => {
-      dispatch(setNotePlaying(tuner.noteName || ''));
+      const timeFromLastNoteUpdate = Date.now() - notePlayingUpdatedAt.current;
 
-      if ((Date.now() - notePlayingUpdatedAt.current) >= 500) {
+      if (timeFromLastNoteUpdate >= 200) {
+        dispatch(setNotePlaying(tuner.noteName || ''));
+      }
+
+      if (timeFromLastNoteUpdate >= 1000) {
         resetTunerPitchInfo();
       }
 

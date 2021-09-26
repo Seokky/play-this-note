@@ -1,3 +1,3 @@
-import { AppListGroup } from "./AppListGroup";
+import { AppListItem } from "./AppListItem";
 
-export type AppList = AppListGroup[];
+export type AppList = AppListItem[];

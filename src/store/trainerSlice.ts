@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { MusicalNote } from '../types/MusicalNote';
 
 interface TrainerState {
   playing: boolean;
-  noteToPlay: string;
-  notePlaying: string;
+  noteToPlay: MusicalNote;
+  notePlaying: MusicalNote | '';
 }
 
 const initialState: TrainerState = {
@@ -19,19 +20,15 @@ export const trainerSlice = createSlice({
     togglePlaying: (state, action: PayloadAction) => {
       state.playing = !state.playing;
     },
-    setNotePlaying: (state, action: PayloadAction<string>) => {
+    setNotePlaying: (state, action: PayloadAction<TrainerState['notePlaying']>) => {
       state.notePlaying = action.payload;
     },
-    setNoteToPlay: (state, action: PayloadAction<string>) => {
+    setNoteToPlay: (state, action: PayloadAction<TrainerState['noteToPlay']>) => {
       state.noteToPlay = action.payload;
     },
-  }
+  },
 });
 
-export const {
-  togglePlaying,
-  setNotePlaying,
-  setNoteToPlay
-} = trainerSlice.actions;
+export const { togglePlaying, setNotePlaying, setNoteToPlay } = trainerSlice.actions;
 
 export default trainerSlice.reducer;

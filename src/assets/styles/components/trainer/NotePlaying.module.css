@@ -2,12 +2,7 @@
   border-radius: 0 0 100px 100px;
   border: 2px solid var(--background-accent-color);
   font-size: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.wrapper--playing {
+  line-height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,6 +12,21 @@
   display: block;
   padding-top: 35px;
   text-align: center;
+}
+
+.wrapper--to-high {
+  color: var(--error-color);
+}
+
+.wrapper--to-low {
+  color: var(--error-color);
+}
+
+.feedback {
+  padding-top: 15px;
+  font-size: 18px;
+  line-height: 100%;
+  color: white;
 }
 
 .mic {
