@@ -4,6 +4,8 @@
   justify-content: space-between;
   font-size: 16px;
   padding: 10px var(--padding-side);
+  margin: 4px 0;
+  border-radius: var(--list-item-border-radius);
 }
 
 .wrapper--checked {

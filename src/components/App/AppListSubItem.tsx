@@ -1,23 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 import clsx from 'clsx';
-
+import { useDispatch } from 'react-redux';
 import { AppListSubItem as TAppListSubItem } from 'types/AppListSubItem';
-
+import { checkListSubItem, getPickedSet } from 'store/setsSlice';
 import styles from 'assets/styles/components/app/AppListGroupItem.module.css';
 
 type Props = {
+  parentTitle: string;
   item: TAppListSubItem;
 };
 
-export default class AppListSubItem extends Component<Props> {
-  classNames = clsx([styles.wrapper, this.props.item.checked && styles['wrapper--checked']]);
+export default function AppListSubItem({ item, parentTitle }: Props) {
+  const dispatch = useDispatch();
+  const classNames = clsx([styles.wrapper, item.checked && styles['wrapper--checked']]);
 
-  render() {
-    return (
-      <div className={this.classNames}>
-        <span className={styles.title}>{this.props.item.title}</span>
-        <span className={styles.circle} />
-      </div>
-    );
-  }
+  const toggleCheck = () => {
+    dispatch(checkListSubItem({ itemTitle: parentTitle, subItemTitle: item.title }));
+    console.log(dispatch(getPickedSet()));
+  };
+
+  return (
+    <div className={classNames} onClick={toggleCheck}>
+      <span className={styles.title}>{item.title}</span>
+      <span className={styles.circle} />
+    </div>
+  );
 }

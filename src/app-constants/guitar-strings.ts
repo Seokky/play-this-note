@@ -21,6 +21,7 @@ export const FIRST = [
   'A5',
   'A#5',
   'B5',
+  'B#5',
 ] as MusicalNote[];
 
 export const SECOND = [

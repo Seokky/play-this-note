@@ -15,16 +15,13 @@ tuner.add(voice);
 export default function Trainer() {
   const dispatch = useDispatch();
 
-  const playing = useSelector(({ trainer }: RootState) => trainer.playing);
-  const noteToPlay = useSelector(({ trainer }: RootState) => trainer.noteToPlay);
-  const notePlaying = useSelector(({ trainer }: RootState) => trainer.notePlaying);
-  const playingRef = useRef(playing);
-
-  const notePlayingUpdatedAt = useRef(Date.now());
-
   const goToTheNextStep = () => {
     dispatch(setNoteToPlay(getRandomNote()));
   };
+
+  const playing = useSelector(({ trainer }: RootState) => trainer.playing);
+  const playingRef = useRef(playing);
+  const notePlayingUpdatedAt = useRef(Date.now());
 
   useEffect(() => {
     const startListening = async () => {
@@ -69,6 +66,9 @@ export default function Trainer() {
       stopListening();
     }
   }, [playing]);
+
+  const noteToPlay = useSelector(({ trainer }: RootState) => trainer.noteToPlay);
+  const notePlaying = useSelector(({ trainer }: RootState) => trainer.notePlaying);
 
   useEffect(() => {
     notePlayingUpdatedAt.current = Date.now();

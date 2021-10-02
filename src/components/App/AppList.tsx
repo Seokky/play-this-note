@@ -12,10 +12,10 @@ export default class AppList extends Component<Props> {
     return (
       <div className={styles.wrapper}>
         {this.props.list
-          .filter((group) => !!group.items.length)
-          .map((group) => (
-            <div key={group.title} className={styles.group}>
-              <AppListItem group={group} />
+          .filter((i) => !!i.items.length)
+          .map((i) => (
+            <div key={i.title} className={styles.group}>
+              <AppListItem item={i} />
             </div>
           ))}
       </div>

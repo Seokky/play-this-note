@@ -3,9 +3,11 @@ import { AppList } from 'types/AppList';
 import { AppListGroupTitle } from 'types/AppListGroupTitle';
 import { NOTES } from 'app-constants/notes';
 import { getFirstNFrets } from '../app-constants/guitar-frets';
+import { MusicalNote } from '../types/MusicalNote';
 
 interface SetsState {
   sets: AppList;
+  pickedSet: MusicalNote[];
 }
 
 const initialState: SetsState = {
@@ -139,20 +141,52 @@ const initialState: SetsState = {
       ],
     },
   ],
+  pickedSet: [],
 };
 
 export const setsSlice = createSlice({
   name: 'sets',
   initialState,
   reducers: {
-    expandListGroup: (state, action: PayloadAction<AppListGroupTitle>) => {
+    expandListItem: (state, action: PayloadAction<AppListGroupTitle>) => {
       const group = state.sets.find((s) => s.title === action.payload)!;
 
       group.expanded = !group.expanded;
     },
+    checkListSubItem: (
+      state,
+      action: PayloadAction<{ itemTitle: string; subItemTitle: string }>
+    ) => {
+      const item = state.sets.find((i) => i.title === action.payload.itemTitle)!;
+      const subItem = item.items.find((i) => i.title === action.payload.subItemTitle)!;
+
+      state.sets
+        .filter((i) => i.title !== action.payload.itemTitle)
+        .forEach((s) => {
+          s.items.forEach((i) => {
+            i.checked = false;
+          });
+        });
+
+      if (!item.multiple) {
+        item.items.forEach((i) => {
+          i.checked = false;
+        });
+      }
+
+      subItem.checked = !subItem.checked;
+    },
+    getPickedSet: (state) => {
+      state.pickedSet = state.sets.reduce((acc: MusicalNote[], set) => {
+        const setCheckedItems = set.items.filter((i) => i.checked);
+        const setCheckedItemsNotes = setCheckedItems.map((i) => i.notes).flat();
+
+        return acc.concat(setCheckedItemsNotes);
+      }, []);
+    },
   },
 });
 
-export const { expandListGroup } = setsSlice.actions;
+export const { expandListItem, checkListSubItem, getPickedSet } = setsSlice.actions;
 
 export default setsSlice.reducer;
