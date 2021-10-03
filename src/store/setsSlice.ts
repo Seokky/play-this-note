@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppList } from 'types/AppList';
 import { AppListGroupTitle } from 'types/AppListGroupTitle';
-import { NOTES } from 'app-constants/notes';
-import { getFirstNFrets } from '../app-constants/guitar-frets';
+import { NOTES } from 'modules/common/constants/notes';
+import { getFirstNFrets } from '../modules/common/constants/guitar-frets';
 import { MusicalNote } from '../types/MusicalNote';
 
 interface SetsState {

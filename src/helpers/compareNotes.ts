@@ -1,5 +1,5 @@
 import { PlayingNoteScore } from 'types/PlayingNoteScore';
-import { PITCHES } from 'app-constants/pitches';
+import { PITCHES } from 'modules/common/constants/pitches';
 import { MusicalNote as Note } from '../types/MusicalNote';
 
 export const getHighestNote = (a: Note, b: Note) => {

@@ -1,4 +1,4 @@
-import { NOTES } from 'app-constants/notes';
+import { NOTES } from 'modules/common/constants/notes';
 
 export const getRandomNumber = (max: number) => Math.floor(Math.random() * Math.floor(max));
 
