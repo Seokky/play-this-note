@@ -3,7 +3,10 @@ import { PITCHES } from 'app-constants/pitches';
 import { MusicalNote as Note } from '../types/MusicalNote';
 
 export const getHighestNote = (a: Note, b: Note) => {
-  if (!PITCHES.hasOwnProperty(a) || !PITCHES.hasOwnProperty(b)) {
+  const hasA = Object.prototype.hasOwnProperty.call(PITCHES, a);
+  const hasB = Object.prototype.hasOwnProperty.call(PITCHES, b);
+
+  if (!hasA || !hasB) {
     throw new Error(`getHighestNote: Incorrect note name: ${a}, ${b}`);
   }
 

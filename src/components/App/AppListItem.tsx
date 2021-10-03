@@ -1,54 +1,51 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import { expandListItem } from 'store/setsSlice';
 import clsx from 'clsx';
 import { AppListItem as TAppListItem } from 'types/AppListItem';
 import angleSvg from 'assets/icons/angle-down.svg';
 import styles from 'assets/styles/components/app/AppListGroup.module.css';
-
+import { useDispatch } from 'react-redux';
 import AppListSubItem from './AppListSubItem';
 
 type Props = {
   item: TAppListItem;
-  expandListItem: typeof expandListItem;
 };
 
-class AppListItem extends Component<Props> {
-  render() {
-    const hasItems = this.props.item.items.length > 0;
+export default function AppListItem({ item }: Props) {
+  const dispatch = useDispatch();
 
-    const angleIcon = hasItems && <img src={angleSvg} alt="expand" />;
-
-    const items = hasItems && this.props.item.expanded && (
-      <div className={styles.items}>
-        {this.props.item.items.map((i) => (
-          <AppListSubItem key={i.title} item={i} parentTitle={this.props.item.title} />
-        ))}
-      </div>
-    );
-
-    const wrapperClassNames = clsx([
-      styles.wrapper,
-      this.props.item.expanded && styles['wrapper--expanded'],
-    ]);
-
-    return (
-      <div className={wrapperClassNames}>
-        <div className={styles.title} onClick={this.onClick}>
-          {this.props.item.title}
-          {angleIcon}
-        </div>
-
-        {items}
-      </div>
-    );
-  }
-
-  onClick = () => {
-    this.props.expandListItem(this.props.item.title);
+  const onClick = () => {
+    dispatch(expandListItem(item.title));
   };
+
+  const hasItems = item.items.length > 0;
+  const isSubItemsShown = hasItems && item.expanded;
+
+  const wrapperClassNames = clsx([styles.wrapper, item.expanded && styles['wrapper--expanded']]);
+
+  return (
+    <div className={wrapperClassNames}>
+      <div
+        className={styles.title}
+        onClick={onClick}
+      >
+
+        {item.title}
+
+        {hasItems && <img src={angleSvg} alt="expand" />}
+      </div>
+
+      {isSubItemsShown && (
+        <div className={styles.items}>
+          {item.items.map((i) => (
+            <AppListSubItem
+              key={i.title}
+              item={i}
+              parentTitle={item.title}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
-
-const mapDispatchToProps = { expandListItem };
-
-export default connect(null, mapDispatchToProps)(AppListItem);

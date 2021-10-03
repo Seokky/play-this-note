@@ -9,19 +9,30 @@ type Props = {
   children: JSX.Element | string;
 };
 
-export default function AppButton(props: Props) {
+const AppButton = ({
+  secondary, grow, onClick, children,
+}: Props) => {
   const classNames = clsx([
     styles.wrapper,
-    props.secondary && styles['wrapper--secondary'],
-    props.grow && styles['wrapper--grow']
+    secondary && styles['wrapper--secondary'],
+    grow && styles['wrapper--grow'],
   ]);
 
   return (
     <button
+      type="button"
       className={classNames}
-      onClick={props.onClick}
+      onClick={onClick}
     >
-      {props.children}
+      {children}
     </button>
   );
-}
+};
+
+AppButton.defaultProps = {
+  secondary: false,
+  grow: false,
+  onClick: undefined,
+};
+
+export default AppButton;

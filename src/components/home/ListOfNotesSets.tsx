@@ -1,25 +1,15 @@
-import React, { Component } from 'react';
-import { RootState } from 'types/RootState';
-import { AppList as TAppList } from 'types/AppList';
-import { connect } from "react-redux";
+import React from 'react';
 import styles from 'assets/styles/components/home/ListOfNotesSets.module.css';
 import AppList from 'components/app/AppList';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../types/RootState';
 
-type Props = {
-  sets: TAppList
+export default function ListOfNotesSets() {
+  const sets = useSelector((s: RootState) => s.sets.sets);
+
+  return (
+    <div className={styles.wrapper}>
+      <AppList list={sets} />
+    </div>
+  );
 }
-class ListOfNotesSets extends Component<Props> {
-  render() {
-    return (
-      <div className={styles.wrapper}>
-        <AppList list={this.props.sets} />
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = (state: RootState): Props => ({
-  sets: state.sets.sets
-});
-
-export default connect(mapStateToProps)(ListOfNotesSets);

@@ -1,3 +1,3 @@
-import { AppListItem } from "./AppListItem";
+import { AppListItem } from './AppListItem';
 
 export type AppList = AppListItem[];

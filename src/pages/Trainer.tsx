@@ -24,17 +24,9 @@ export default function Trainer() {
   const notePlayingUpdatedAt = useRef(Date.now());
 
   useEffect(() => {
-    const startListening = async () => {
-      goToTheNextStep();
-      await voice.play();
-      tuner.updatePitch();
-      logPitch();
-    };
-
-    const stopListening = () => {
-      resetTunerPitchInfo();
-      voice.stop();
-      tuner.stopUpdatingPitch();
+    const resetTunerPitchInfo = () => {
+      tuner.noteName = undefined;
+      tuner.pitch = undefined;
     };
 
     const logPitch = () => {
@@ -53,9 +45,17 @@ export default function Trainer() {
       }
     };
 
-    const resetTunerPitchInfo = () => {
-      tuner.noteName = undefined;
-      tuner.pitch = undefined;
+    const startListening = async () => {
+      goToTheNextStep();
+      await voice.play();
+      tuner.updatePitch();
+      logPitch();
+    };
+
+    const stopListening = () => {
+      resetTunerPitchInfo();
+      voice.stop();
+      tuner.stopUpdatingPitch();
     };
 
     playingRef.current = playing;

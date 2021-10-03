@@ -8,7 +8,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
-    "format": "prettier --write 'src/**/*.{ts,tsx,scss,css,json}'"
+    "stylelint": "stylelint .",
+    "format": "prettier --write 'src/**/*.{ts,tsx,scss,css,json}'",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.1",
@@ -32,20 +34,21 @@
   "devDependencies": {
     "@types/react-redux": "^7.1.18",
     "@types/react-router-dom": "^5.1.8",
-    "@typescript-eslint/eslint-plugin": "^4.29.3",
-    "@typescript-eslint/parser": "^4.29.3",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
     "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-typescript": "^14.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-react-app": "^6.0.0",
-    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-flowtype": "^5.9.1",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.4.1",
-    "eslint-plugin-react": "^7.25.0",
+    "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
@@ -54,12 +57,6 @@
     "prettier-eslint-cli": "^5.0.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [

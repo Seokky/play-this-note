@@ -1,6 +1,6 @@
 import React from 'react';
-import { Provider } from "react-redux";
-import store from "store";
+import { Provider } from 'react-redux';
+import store from 'store';
 
 import 'assets/styles/reset.css';
 import 'assets/styles/fontface.css';
@@ -12,7 +12,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-} from "react-router-dom";
+} from 'react-router-dom';
 
 import AppHeader from 'components/app/AppHeader';
 import Home from 'pages/Home';

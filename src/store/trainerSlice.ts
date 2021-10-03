@@ -17,7 +17,7 @@ export const trainerSlice = createSlice({
   name: 'trainer',
   initialState,
   reducers: {
-    togglePlaying: (state, action: PayloadAction) => {
+    togglePlaying: (state) => {
       state.playing = !state.playing;
     },
     setNotePlaying: (state, action: PayloadAction<TrainerState['notePlaying']>) => {

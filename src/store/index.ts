@@ -6,7 +6,7 @@ const store = configureStore({
   reducer: {
     sets: setsReducer,
     trainer: trainerReducer,
-  }
+  },
 });
 
 export default store;

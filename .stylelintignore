@@ -1,0 +1,6 @@
+**/*.woff
+**/*.woff2
+**/*.png
+**/*.ico
+**/*.json
+src/assets/styles/reset.css

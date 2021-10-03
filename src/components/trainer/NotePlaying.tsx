@@ -33,17 +33,19 @@ export default function NotePlaying() {
 
   const PLAYING_VIEW = (
     notePlaying
-      ?
+      ? (
         <div>
           <div>{ notePlaying }</div>
           <div className={styles.feedback}>{ noteScore }</div>
         </div>
-      :
+      )
+      : (
         <img
           src={micSvg}
           alt="microphone"
           className={styles.mic}
         />
+      )
   );
   const PAUSED_VIEW = (
     <div className={styles.start}>

@@ -10,7 +10,9 @@ import {
   THREE_LINE,
   TWO_LINE,
 } from './octaves';
-import { FIFTH, FIRST, FOURTH, SECOND, SIXTH, THIRD } from './guitar-strings';
+import {
+  FIFTH, FIRST, FOURTH, SECOND, SIXTH, THIRD,
+} from './guitar-strings';
 import { FRETS } from './guitar-frets';
 
 export const NOTES = {

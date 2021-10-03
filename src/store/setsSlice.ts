@@ -149,16 +149,23 @@ export const setsSlice = createSlice({
   initialState,
   reducers: {
     expandListItem: (state, action: PayloadAction<AppListGroupTitle>) => {
-      const group = state.sets.find((s) => s.title === action.payload)!;
+      const group = state.sets.find((s) => s.title === action.payload);
 
-      group.expanded = !group.expanded;
+      if (group) {
+        group.expanded = !group.expanded;
+      }
     },
     checkListSubItem: (
       state,
-      action: PayloadAction<{ itemTitle: string; subItemTitle: string }>
+      action: PayloadAction<{ itemTitle: string; subItemTitle: string }>,
     ) => {
-      const item = state.sets.find((i) => i.title === action.payload.itemTitle)!;
-      const subItem = item.items.find((i) => i.title === action.payload.subItemTitle)!;
+      const item = state.sets.find((i) => i.title === action.payload.itemTitle);
+
+      if (!item) return;
+
+      const subItem = item.items.find((i) => i.title === action.payload.subItemTitle);
+
+      if (!subItem) return;
 
       state.sets
         .filter((i) => i.title !== action.payload.itemTitle)
@@ -176,7 +183,7 @@ export const setsSlice = createSlice({
 
       subItem.checked = !subItem.checked;
     },
-    getPickedSet: (state) => {
+    setPickedSet: (state) => {
       state.pickedSet = state.sets.reduce((acc: MusicalNote[], set) => {
         const setCheckedItems = set.items.filter((i) => i.checked);
         const setCheckedItemsNotes = setCheckedItems.map((i) => i.notes).flat();
@@ -187,6 +194,6 @@ export const setsSlice = createSlice({
   },
 });
 
-export const { expandListItem, checkListSubItem, getPickedSet } = setsSlice.actions;
+export const { expandListItem, checkListSubItem, setPickedSet } = setsSlice.actions;
 
 export default setsSlice.reducer;

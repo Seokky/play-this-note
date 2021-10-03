@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class CreateSetOfNotes extends Component {
-  render() {
-    return (
-      <div className="app-container">
-        create set
-      </div>
-    );
-  }
+export default function CreateSetOfNotes() {
+  return (
+    <div className="app-container">
+      create set
+    </div>
+  );
 }

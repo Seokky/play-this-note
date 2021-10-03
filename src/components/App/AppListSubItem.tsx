@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
 import { AppListSubItem as TAppListSubItem } from 'types/AppListSubItem';
-import { checkListSubItem, getPickedSet } from 'store/setsSlice';
+import { checkListSubItem, setPickedSet } from 'store/setsSlice';
 import styles from 'assets/styles/components/app/AppListGroupItem.module.css';
 
 type Props = {
@@ -12,11 +12,14 @@ type Props = {
 
 export default function AppListSubItem({ item, parentTitle }: Props) {
   const dispatch = useDispatch();
-  const classNames = clsx([styles.wrapper, item.checked && styles['wrapper--checked']]);
+  const classNames = clsx([
+    styles.wrapper,
+    item.checked && styles['wrapper--checked'],
+  ]);
 
   const toggleCheck = () => {
     dispatch(checkListSubItem({ itemTitle: parentTitle, subItemTitle: item.title }));
-    console.log(dispatch(getPickedSet()));
+    console.log(dispatch(setPickedSet()));
   };
 
   return (

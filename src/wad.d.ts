@@ -1,3 +1,4 @@
+/* eslint-disable */
 declare module 'web-audio-daw' {
 
   interface Envelope {
@@ -79,6 +80,7 @@ declare module 'web-audio-daw' {
 
   class Wad {
     constructor(args: ConstructorArgs);
+
     public static audioContext: AudioContext;
 
     play: (args?: PlayArgs) => Promise<this>;
@@ -108,3 +110,4 @@ declare module 'web-audio-daw' {
 
   export = Wad;
 }
+/* eslint-enable */
