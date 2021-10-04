@@ -10,7 +10,9 @@
 }
 
 .wrapper[disabled] {
-  background-color: gray;
+  background-color: transparent;
+  color: var(--background-disabled-color);
+  border-color: var(--background-disabled-color);
 }
 
 .wrapper:hover {

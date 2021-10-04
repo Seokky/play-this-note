@@ -9,6 +9,7 @@
   --background-main-color: #6f2232;
   --background-main-dimmed-color: rgba(var(--background-main-color), 0.3);
   --background-accent-color: #950740;
+  --background-disabled-color: #808080;
 
   /* text colors */
 

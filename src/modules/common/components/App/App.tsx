@@ -6,7 +6,7 @@ import 'assets/styles/reset.css';
 import 'assets/styles/fontface.css';
 import 'assets/styles/root.css';
 
-import 'modules/common/components/App/App.css';
+import './App.css';
 
 import {
   BrowserRouter as Router,

@@ -1,4 +1,4 @@
-export type AppListGroupTitle = 'Мои наборы'
+export type AppListItemTitle = 'Мои наборы'
   | 'Все ноты (по октавам)'
   | 'Вокал (по тембру)'
   | 'Гитара (по ладам)'

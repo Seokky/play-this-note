@@ -1,13 +1,13 @@
 import React from 'react';
 import { AppList as TAppList } from 'types/AppList';
-import { AppListGroupTitle } from 'types/AppListGroupTitle';
+import { AppListItemTitle } from 'types/AppListItemTitle';
 import styles from './AppList.module.css';
 import AppListItem from './components/AppListItem/AppListItem';
 
 type Props = {
   list: TAppList;
-  onItemClick: (itemTitle: AppListGroupTitle) => void;
-  onSubItemClick: (itemTitle: AppListGroupTitle, subItemTitle: string) => void;
+  onItemClick: (itemTitle: AppListItemTitle) => void;
+  onSubItemClick: (itemTitle: AppListItemTitle, subItemTitle: string) => void;
 };
 
 export default function AppList({ list, onItemClick, onSubItemClick }: Props) {

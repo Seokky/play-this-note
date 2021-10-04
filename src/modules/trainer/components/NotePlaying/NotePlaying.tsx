@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
-import styles from 'modules/trainer/components/NotePlaying/NotePlaying.module.css';
 import micSvg from 'assets/icons/mic.svg';
 import AppButton from 'modules/common/components/AppButton/AppButton';
 import { getNoteScore } from 'helpers/compareNotes';
@@ -8,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { togglePlaying } from 'store/trainerSlice';
 import { RootState } from 'types/RootState';
 import { PlayingNoteScore } from 'types/PlayingNoteScore';
+import styles from './NotePlaying.module.css';
 
 export default function NotePlaying() {
   const [noteScore, setNoteScore] = useState<PlayingNoteScore>('equal');

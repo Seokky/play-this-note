@@ -1,8 +1,8 @@
 import { AppListSubItem } from './AppListSubItem';
-import { AppListGroupTitle } from './AppListGroupTitle';
+import { AppListItemTitle } from './AppListItemTitle';
 
 export type AppListItem = {
-  title: AppListGroupTitle;
+  title: AppListItemTitle;
   multiple: boolean;
   expanded: boolean;
   items: AppListSubItem[];

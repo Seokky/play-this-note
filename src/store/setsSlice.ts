@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppList } from 'types/AppList';
-import { AppListGroupTitle } from 'types/AppListGroupTitle';
+import { AppListItemTitle } from 'types/AppListItemTitle';
+import { MusicalNote } from 'types/MusicalNote';
 import { NOTES } from 'modules/common/constants/notes';
-import { getFirstNFrets } from '../modules/common/constants/guitar-frets';
-import { MusicalNote } from '../types/MusicalNote';
+import { getFirstNFrets } from 'modules/common/constants/guitar-frets';
 
 interface SetsState {
   sets: AppList;
@@ -148,7 +148,7 @@ export const setsSlice = createSlice({
   name: 'sets',
   initialState,
   reducers: {
-    expandListItem: (state, action: PayloadAction<AppListGroupTitle>) => {
+    expandListItem: (state, action: PayloadAction<AppListItemTitle>) => {
       const group = state.sets.find((s) => s.title === action.payload);
 
       if (group) {

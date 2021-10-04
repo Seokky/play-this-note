@@ -1,11 +1,8 @@
 import React from 'react';
-
 import plusSvg from 'assets/icons/plus.svg';
-import styles from 'modules/home/components/CreateSetOfNotesBtn/CreateSetOfNotesBtn.module.css';
-
 import { Link } from 'react-router-dom';
-
 import AppButton from 'modules/common/components/AppButton/AppButton';
+import styles from './CreateSetOfNotesBtn.module.css';
 
 export default function CreateSetOfNotesBtn() {
   return (

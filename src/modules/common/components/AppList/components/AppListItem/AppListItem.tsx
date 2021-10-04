@@ -1,15 +1,15 @@
 import React from 'react';
 import clsx from 'clsx';
-import { AppListGroupTitle } from 'types/AppListGroupTitle';
+import { AppListItemTitle } from 'types/AppListItemTitle';
 import { AppListItem as TAppListItem } from 'types/AppListItem';
 import angleSvg from 'assets/icons/angle-down.svg';
 import styles from './AppListItem.module.css';
-import AppListSubItem from '../AppListSubItem/AppListSubItem';
+import AppListSubItem from './components/AppListSubItem/AppListSubItem';
 
 type Props = {
   item: TAppListItem;
   onClick: () => void;
-  onSubItemClick: (itemTitle: AppListGroupTitle, subItemTitle: string) => void;
+  onSubItemClick: (itemTitle: AppListItemTitle, subItemTitle: string) => void;
 };
 
 export default function AppListItem({ item, onClick, onSubItemClick }: Props) {
