@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import micSvg from 'assets/icons/mic.svg';
 import AppButton from 'modules/common/components/AppButton/AppButton';
-import { getNoteScore } from 'helpers/compareNotes';
+import { getNoteScore } from 'modules/common/helpers/compareNotes';
 import { useSelector, useDispatch } from 'react-redux';
 import { togglePlaying } from 'store/trainerSlice';
 import { RootState } from 'types/RootState';

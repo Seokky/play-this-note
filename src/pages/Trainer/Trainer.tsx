@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Wad from 'web-audio-daw';
 import { RootState } from 'types/RootState';
-import { getRandomNote } from 'helpers/random';
+import { getRandomNote } from 'modules/common/helpers/random';
 import { setNotePlaying, setNoteToPlay } from 'store/trainerSlice';
 import styles from 'pages/Trainer/Trainer.module.css';
 import PairOfNotes from 'modules/trainer/components/PairOfNotes/PairOfNotes';

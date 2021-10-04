@@ -3,7 +3,9 @@ import { AppList } from 'types/AppList';
 import { AppListItemTitle } from 'types/AppListItemTitle';
 import { MusicalNote } from 'types/MusicalNote';
 import { NOTES } from 'modules/common/constants/notes';
-import { getFirstNFrets } from 'modules/common/constants/guitar-frets';
+import { getFirstNFrets } from 'modules/common/helpers/fretsHelper';
+import { FRETS as GUITAR_FRETS } from '../modules/common/constants/guitar-frets';
+import { FRETS as UKULELE_FRETS } from '../modules/common/constants/ukulele-frets';
 
 interface SetsState {
   sets: AppList;
@@ -79,27 +81,27 @@ const initialState: SetsState = {
         {
           title: 'первые 3 лада',
           checked: false,
-          notes: getFirstNFrets(3),
+          notes: getFirstNFrets(3, GUITAR_FRETS),
         },
         {
           title: 'первые 5 ладов',
           checked: false,
-          notes: getFirstNFrets(5),
+          notes: getFirstNFrets(5, GUITAR_FRETS),
         },
         {
           title: 'первые 7 ладов',
           checked: false,
-          notes: getFirstNFrets(7),
+          notes: getFirstNFrets(7, GUITAR_FRETS),
         },
         {
           title: 'первые 9 ладов',
           checked: false,
-          notes: getFirstNFrets(9),
+          notes: getFirstNFrets(9, GUITAR_FRETS),
         },
         {
           title: 'первые 12 ладов',
           checked: false,
-          notes: getFirstNFrets(12),
+          notes: getFirstNFrets(12, GUITAR_FRETS),
         },
       ],
     },
@@ -136,6 +138,65 @@ const initialState: SetsState = {
         {
           title: '6-я струна',
           notes: NOTES.GUITAR.STRINGS.SIXTH,
+          checked: false,
+        },
+      ],
+    },
+    {
+      title: 'Укулеле (по ладам)',
+      multiple: false,
+      expanded: false,
+      items: [
+        {
+          title: 'первые 3 лада',
+          checked: false,
+          notes: getFirstNFrets(3, UKULELE_FRETS),
+        },
+        {
+          title: 'первые 5 ладов',
+          checked: false,
+          notes: getFirstNFrets(5, UKULELE_FRETS),
+        },
+        {
+          title: 'первые 7 ладов',
+          checked: false,
+          notes: getFirstNFrets(7, UKULELE_FRETS),
+        },
+        {
+          title: 'первые 9 ладов',
+          checked: false,
+          notes: getFirstNFrets(9, UKULELE_FRETS),
+        },
+        {
+          title: 'первые 12 ладов',
+          checked: false,
+          notes: getFirstNFrets(12, UKULELE_FRETS),
+        },
+      ],
+    },
+    {
+      title: 'Укулеле (по струнам)',
+      multiple: true,
+      expanded: false,
+      items: [
+        {
+          title: '1-я струна',
+          notes: NOTES.UKULELE.STRINGS.FIRST,
+          checked: false,
+        },
+        {
+          title: '2-я струна',
+          notes: NOTES.UKULELE.STRINGS.SECOND,
+          checked: false,
+        },
+        {
+          title: '3-я струна',
+          notes: NOTES.UKULELE.STRINGS.THIRD,
+          checked: false,
+        },
+        {
+          title: '4-я струна',
+          notes: NOTES.UKULELE.STRINGS.FOURTH,
           checked: false,
         },
       ],

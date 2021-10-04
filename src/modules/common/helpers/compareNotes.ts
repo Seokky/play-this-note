@@ -1,6 +1,6 @@
 import { PlayingNoteScore } from 'types/PlayingNoteScore';
 import { PITCHES } from 'modules/common/constants/pitches';
-import { MusicalNote as Note } from '../types/MusicalNote';
+import { MusicalNote as Note } from '../../../types/MusicalNote';
 
 export const getHighestNote = (a: Note, b: Note) => {
   const hasA = Object.prototype.hasOwnProperty.call(PITCHES, a);

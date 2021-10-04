@@ -1,41 +1,20 @@
+import { MusicalNote } from 'types/MusicalNote';
 import { PITCHES } from './pitches';
-import { MusicalNote } from '../../../types/MusicalNote';
-import {
-  CONTRA,
-  FOUR_LINE,
-  GREAT,
-  ONE_LINE,
-  SMALL,
-  SUB_CONTRA,
-  THREE_LINE,
-  TWO_LINE,
-} from './octaves';
-import {
-  FIFTH, FIRST, FOURTH, SECOND, SIXTH, THIRD,
-} from './guitar-strings';
-import { FRETS } from './guitar-frets';
+import * as OCTAVES from './octaves';
+import * as GUITAR_STRINGS from './guitar-strings';
+import { FRETS as GUITAR_FRETS } from './guitar-frets';
+import * as UKULELE_STRINGS from './ukulele-strings';
+import { FRETS as UKULELE_FRETS } from './ukulele-frets';
 
 export const NOTES = {
   ALL: Object.keys(PITCHES) as MusicalNote[],
-  OCTAVES: {
-    SUB_CONTRA,
-    CONTRA,
-    GREAT,
-    SMALL,
-    ONE_LINE,
-    TWO_LINE,
-    THREE_LINE,
-    FOUR_LINE,
-  },
+  OCTAVES,
   GUITAR: {
-    STRINGS: {
-      FIRST,
-      SECOND,
-      THIRD,
-      FOURTH,
-      FIFTH,
-      SIXTH,
-    },
-    FRETS,
+    STRINGS: GUITAR_STRINGS,
+    FRETS: GUITAR_FRETS,
+  },
+  UKULELE: {
+    STRINGS: UKULELE_STRINGS,
+    FRETS: UKULELE_FRETS,
   },
 };

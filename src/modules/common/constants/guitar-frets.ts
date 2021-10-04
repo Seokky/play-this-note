@@ -15,14 +15,3 @@ export const FRETS: Record<number, MusicalNote[]> = {
   11: ['D#5', 'A#4', 'F#4', 'C#4', 'G#3', 'D#3'] as MusicalNote[],
   12: ['E5', 'B4', 'G4', 'D4', 'A3', 'E3'] as MusicalNote[],
 };
-
-export const getFirstNFrets = (n: number) => {
-  if (n < 0 || n > 12) throw new Error('Incorrect frets number');
-
-  const frets: Array<MusicalNote[]> = [];
-  for (let i = 0; i <= n; i += 1) {
-    frets.push(FRETS[i]);
-  }
-
-  return frets.flat();
-};

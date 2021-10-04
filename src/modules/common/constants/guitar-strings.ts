@@ -1,4 +1,4 @@
-import { MusicalNote } from '../../../types/MusicalNote';
+import { MusicalNote } from 'types/MusicalNote';
 
 export const FIRST = [
   'E4',
