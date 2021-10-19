@@ -12,6 +12,13 @@
   justify-content: space-between;
   font-size: 18px;
   padding: 10px var(--padding-side);
+  border: 1px solid transparent;
+  border-radius: var(--list-item-border-radius);
+  box-sizing: border-box;
+}
+
+.wrapper--has-checked .title {
+  border-color: var(--background-accent-color);
 }
 
 .items {

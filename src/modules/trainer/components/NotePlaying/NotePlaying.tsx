@@ -4,7 +4,7 @@ import micSvg from 'assets/icons/mic.svg';
 import AppButton from 'modules/common/components/AppButton/AppButton';
 import { getNoteScore } from 'modules/common/helpers/compareNotes';
 import { useSelector, useDispatch } from 'react-redux';
-import { togglePlaying } from 'store/trainerSlice';
+import { togglePlaying } from 'store/trainer';
 import { RootState } from 'types/RootState';
 import { PlayingNoteScore } from 'types/PlayingNoteScore';
 import styles from './NotePlaying.module.css';

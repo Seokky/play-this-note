@@ -17,7 +17,8 @@ import {
 import AppHeader from 'modules/common/components/AppHeader/AppHeader';
 import Home from 'pages/Home/Home';
 import Trainer from 'pages/Trainer/Trainer';
-import CreateSetOfNotes from 'pages/CreateSetOfNotes';
+import SetCreator from 'pages/SetCreator/SetCreator';
+import { ROUTES } from '../../constants/routes';
 
 function App() {
   return (
@@ -27,13 +28,13 @@ function App() {
           <AppHeader />
 
           <Switch>
-            <Route path="/trainer">
+            <Route path={ROUTES.TRAINER}>
               <Trainer />
             </Route>
-            <Route path="/create-own-set">
-              <CreateSetOfNotes />
+            <Route path={ROUTES.CREATE_OWN_SET}>
+              <SetCreator />
             </Route>
-            <Route path="/">
+            <Route path={ROUTES.HOME}>
               <Home />
             </Route>
           </Switch>

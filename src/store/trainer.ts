@@ -7,15 +7,15 @@ interface TrainerState {
   notePlaying: MusicalNote | '';
 }
 
-const initialState: TrainerState = {
-  playing: false,
-  noteToPlay: 'F#5',
-  notePlaying: '',
-};
-
-export const trainerSlice = createSlice({
+export const trainer = createSlice({
   name: 'trainer',
-  initialState,
+
+  initialState: {
+    playing: false,
+    noteToPlay: 'F#5',
+    notePlaying: '',
+  } as TrainerState,
+
   reducers: {
     togglePlaying: (state) => {
       state.playing = !state.playing;
@@ -29,6 +29,6 @@ export const trainerSlice = createSlice({
   },
 });
 
-export const { togglePlaying, setNotePlaying, setNoteToPlay } = trainerSlice.actions;
+export const { togglePlaying, setNotePlaying, setNoteToPlay } = trainer.actions;
 
-export default trainerSlice.reducer;
+export default trainer.reducer;

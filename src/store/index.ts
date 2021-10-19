@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import setsReducer from './setsSlice';
-import trainerReducer from './trainerSlice';
+import setsReducer from './setChooser';
+import trainerReducer from './trainer';
 
 const store = configureStore({
   reducer: {

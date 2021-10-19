@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import Wad from 'web-audio-daw';
 import { RootState } from 'types/RootState';
 import { getRandomNote } from 'modules/common/helpers/random';
-import { setNotePlaying, setNoteToPlay } from 'store/trainerSlice';
+import { setNotePlaying, setNoteToPlay, togglePlaying } from 'store/trainer';
 import styles from 'pages/Trainer/Trainer.module.css';
 import PairOfNotes from 'modules/trainer/components/PairOfNotes/PairOfNotes';
+import StopBtn from 'modules/trainer/components/StopButton/StopBtn';
+import { useHistory } from 'react-router-dom';
 
 const voice = new Wad({ source: 'mic' });
 const tuner = new (Wad as any).Poly();
@@ -13,15 +15,24 @@ tuner.setVolume(0);
 tuner.add(voice);
 
 export default function Trainer() {
-  const dispatch = useDispatch();
-
-  const goToTheNextStep = () => {
-    dispatch(setNoteToPlay(getRandomNote()));
-  };
-
+  const history = useHistory();
+  const pickedSet = useSelector(({ sets }: RootState) => sets.pickedSet);
+  const noteToPlay = useSelector(({ trainer }: RootState) => trainer.noteToPlay);
+  const notePlaying = useSelector(({ trainer }: RootState) => trainer.notePlaying);
   const playing = useSelector(({ trainer }: RootState) => trainer.playing);
   const playingRef = useRef(playing);
   const notePlayingUpdatedAt = useRef(Date.now());
+  const dispatch = useDispatch();
+
+  const goToTheNextStep = () => {
+    dispatch(setNoteToPlay(getRandomNote(pickedSet)));
+  };
+
+  useEffect(() => {
+    if (!pickedSet.length) {
+      history.push('/');
+    }
+  }, []);
 
   useEffect(() => {
     const resetTunerPitchInfo = () => {
@@ -67,9 +78,6 @@ export default function Trainer() {
     }
   }, [playing]);
 
-  const noteToPlay = useSelector(({ trainer }: RootState) => trainer.noteToPlay);
-  const notePlaying = useSelector(({ trainer }: RootState) => trainer.notePlaying);
-
   useEffect(() => {
     notePlayingUpdatedAt.current = Date.now();
 
@@ -78,9 +86,15 @@ export default function Trainer() {
     }
   }, [notePlaying, noteToPlay]);
 
+  const stop = () => {
+    dispatch(togglePlaying());
+  };
+
   return (
     <div className={styles.wrapper}>
       <PairOfNotes />
+
+      {playing && <StopBtn onClick={stop} />}
     </div>
   );
 }

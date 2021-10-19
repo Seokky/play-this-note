@@ -15,10 +15,12 @@ type Props = {
 export default function AppListItem({ item, onClick, onSubItemClick }: Props) {
   const hasItems = item.items.length > 0;
   const isSubItemsShown = hasItems && item.expanded;
+  const hasCheckedSubItems = item.items.some((i) => i.checked);
 
   const wrapperClassNames = clsx([
     styles.wrapper,
     item.expanded && styles['wrapper--expanded'],
+    hasCheckedSubItems && styles['wrapper--has-checked'],
   ]);
 
   return (

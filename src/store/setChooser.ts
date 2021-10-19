@@ -7,12 +7,12 @@ import { getFirstNFrets } from 'modules/common/helpers/fretsHelper';
 import { FRETS as GUITAR_FRETS } from '../modules/common/constants/guitar-frets';
 import { FRETS as UKULELE_FRETS } from '../modules/common/constants/ukulele-frets';
 
-interface SetsState {
+interface State {
   sets: AppList;
   pickedSet: MusicalNote[];
 }
 
-const initialState: SetsState = {
+const initialState: State = {
   sets: [
     {
       title: 'Мои наборы',
@@ -205,8 +205,8 @@ const initialState: SetsState = {
   pickedSet: [],
 };
 
-export const setsSlice = createSlice({
-  name: 'sets',
+export const setChooser = createSlice({
+  name: 'setChooser',
   initialState,
   reducers: {
     expandListItem: (state, action: PayloadAction<AppListItemTitle>) => {
@@ -238,7 +238,7 @@ export const setsSlice = createSlice({
 
       if (!item.multiple) {
         item.items.forEach((i) => {
-          i.checked = false;
+          if (i.title !== action.payload.subItemTitle) i.checked = false;
         });
       }
 
@@ -255,6 +255,6 @@ export const setsSlice = createSlice({
   },
 });
 
-export const { expandListItem, checkListSubItem, setPickedSet } = setsSlice.actions;
+export const { expandListItem, checkListSubItem, setPickedSet } = setChooser.actions;
 
-export default setsSlice.reducer;
+export default setChooser.reducer;
