@@ -16,7 +16,7 @@ tuner.add(voice);
 
 export default function Trainer() {
   const history = useHistory();
-  const pickedSet = useSelector(({ sets }: RootState) => sets.pickedSet);
+  const pickedSet = useSelector(({ setChooser }: RootState) => setChooser.pickedSet);
   const noteToPlay = useSelector(({ trainer }: RootState) => trainer.noteToPlay);
   const notePlaying = useSelector(({ trainer }: RootState) => trainer.notePlaying);
   const playing = useSelector(({ trainer }: RootState) => trainer.playing);

@@ -1,0 +1,31 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  padding: 10px var(--padding-side);
+  margin: 4px 0;
+  border-radius: var(--list-item-border-radius);
+}
+
+.wrapper--checked {
+  background-color: var(--background-main-color);
+}
+
+.title {
+  padding-right: 4px;
+}
+
+.circle {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--text-main-color);
+  border-radius: 100%;
+  opacity: 0.7;
+}
+
+.wrapper--checked .circle {
+  border: none;
+  background-color: var(--background-accent-color);
+  opacity: 1;
+}

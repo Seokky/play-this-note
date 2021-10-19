@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import setsReducer from './setChooser';
-import trainerReducer from './trainer';
+import setChooser from './setChooser';
+import trainer from './trainer';
+import setCreator from './setCreator';
 
 const store = configureStore({
   reducer: {
-    sets: setsReducer,
-    trainer: trainerReducer,
+    setChooser,
+    setCreator,
+    trainer,
   },
 });
 

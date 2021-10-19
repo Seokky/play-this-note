@@ -10,7 +10,7 @@ export default function AppHeader() {
   const history = useHistory();
 
   const goBackInHistory = () => {
-    history.goBack();
+    history.push('/');
   };
 
   return (

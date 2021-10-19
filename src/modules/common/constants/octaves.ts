@@ -1,4 +1,4 @@
-import { MusicalNote } from '../../../types/MusicalNote';
+import { MusicalNote } from 'types/MusicalNote';
 
 export const SUB_CONTRA = ['A0', 'A#0', 'Bb0', 'B0'] as MusicalNote[];
 

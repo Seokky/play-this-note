@@ -3,12 +3,12 @@ import AppList from 'modules/common/components/AppList/AppList';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'types/RootState';
 import { AppListItemTitle } from 'types/AppListItemTitle';
-import { checkListSubItem, expandListItem, setPickedSet } from 'store/setChooser';
+import setChooser, { checkListSubItem, expandListItem, setPickedSet } from 'store/setChooser';
 import styles from './ListOfNotesSets.module.css';
 
 export default function ListOfNotesSets() {
   const dispatch = useDispatch();
-  const sets = useSelector((s: RootState) => s.sets.sets);
+  const sets = useSelector((s: RootState) => s.setChooser.sets);
 
   const onItemClick = (itemTitle: AppListItemTitle) => {
     dispatch(expandListItem(itemTitle));

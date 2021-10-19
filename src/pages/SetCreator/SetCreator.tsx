@@ -1,22 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NOTES } from 'modules/common/constants/notes';
 import NameInput from 'modules/set-creator/components/NameInput/NameInput';
-import clsx from 'clsx';
+import NotesItem from 'modules/set-creator/components/NotesItem/NotesItem';
+import { useDispatch, useSelector } from 'react-redux';
+import { addNote, removeNote } from 'store/setCreator';
+import { RootState } from 'types/RootState';
+import { MusicalNote } from 'types/MusicalNote';
 import styles from './SetCreator.module.css';
 
 export default function SetCreator() {
-  const classNames = clsx([
-    'app-container',
-    styles.wrapper,
-  ]);
+  const dispatch = useDispatch();
+  const pickedNotes = useSelector(({ setCreator } : RootState) => setCreator.notes);
+
+  const toggleNote = (note: MusicalNote) => {
+    if (pickedNotes.includes(note)) {
+      dispatch(removeNote(note));
+    } else {
+      dispatch(addNote(note));
+    }
+  };
 
   return (
-    <div className={classNames}>
+    <div className={styles.wrapper}>
       <NameInput />
 
-      {
-        NOTES.ALL.map((note) => <div key={note}>{note}</div>)
-      }
+      <div className={styles.notes}>
+        {
+          NOTES.ALL.map((note) => (
+            <NotesItem
+              key={note}
+              checked={pickedNotes.includes(note)}
+              note={note}
+              onClick={toggleNote}
+            />
+          ))
+        }
+      </div>
     </div>
   );
 }
