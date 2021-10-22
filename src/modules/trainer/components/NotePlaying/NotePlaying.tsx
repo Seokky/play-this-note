@@ -15,6 +15,12 @@ export default function NotePlaying() {
   const notePlaying = useSelector(({ trainer }: RootState) => trainer.notePlaying);
   const noteToPlay = useSelector(({ trainer }: RootState) => trainer.noteToPlay);
 
+  const noteScoreRU: Record<PlayingNoteScore, string> = {
+    'too low': 'Слишком низко',
+    'too high': 'Слишком высоко',
+    equal: 'В точку!',
+  };
+
   const classNames = clsx([
     styles.wrapper,
     notePlaying && styles['wrapper--note'],
@@ -36,7 +42,7 @@ export default function NotePlaying() {
       ? (
         <div>
           <div>{ notePlaying }</div>
-          <div className={styles.feedback}>{ noteScore }</div>
+          <div className={styles.feedback}>{ noteScoreRU[noteScore] }</div>
         </div>
       )
       : (
