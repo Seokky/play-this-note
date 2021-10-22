@@ -8,6 +8,7 @@ import { togglePlaying } from 'store/trainer';
 import { RootState } from 'types/RootState';
 import { PlayingNoteScore } from 'types/PlayingNoteScore';
 import styles from './NotePlaying.module.css';
+import { MIC_NOT_ALLOWED_MESSAGE } from '../../constants';
 
 export default function NotePlaying() {
   const [noteScore, setNoteScore] = useState<PlayingNoteScore>('equal');
@@ -29,7 +30,15 @@ export default function NotePlaying() {
   ]);
 
   const dispatch = useDispatch();
-  const start = () => { dispatch(togglePlaying()); };
+  const start = async () => {
+    try {
+      await navigator.mediaDevices.getUserMedia({ audio: true });
+
+      dispatch(togglePlaying());
+    } catch {
+      alert(MIC_NOT_ALLOWED_MESSAGE);
+    }
+  };
 
   useEffect(() => {
     if (noteToPlay && notePlaying) {
