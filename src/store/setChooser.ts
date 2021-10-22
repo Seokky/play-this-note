@@ -6,6 +6,7 @@ import { NOTES } from 'modules/common/constants/notes';
 import { getFirstNFrets } from 'modules/common/helpers/fretsHelper';
 import { FRETS as GUITAR_FRETS } from '../modules/common/constants/guitar-frets';
 import { FRETS as UKULELE_FRETS } from '../modules/common/constants/ukulele-frets';
+import { AppListSubItem } from '../types/AppListSubItem';
 
 interface State {
   sets: AppList;
@@ -209,6 +210,13 @@ export const setChooser = createSlice({
   name: 'setChooser',
   initialState,
   reducers: {
+    addMyOwnSet: (state, action: PayloadAction<AppListSubItem>) => {
+      const mySets = state.sets.find((s) => s.title === 'Мои наборы');
+
+      if (!mySets) return;
+
+      mySets.items.push(action.payload);
+    },
     expandListItem: (state, action: PayloadAction<AppListItemTitle>) => {
       const group = state.sets.find((s) => s.title === action.payload);
 
@@ -255,6 +263,8 @@ export const setChooser = createSlice({
   },
 });
 
-export const { expandListItem, checkListSubItem, setPickedSet } = setChooser.actions;
+export const {
+  addMyOwnSet, expandListItem, checkListSubItem, setPickedSet,
+} = setChooser.actions;
 
 export default setChooser.reducer;
