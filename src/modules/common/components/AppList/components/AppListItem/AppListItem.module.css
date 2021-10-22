@@ -1,5 +1,5 @@
 .wrapper {
-  /* margin: 0 10px; */
+  cursor: pointer;
 }
 
 .wrapper--expanded img {
@@ -12,13 +12,12 @@
   justify-content: space-between;
   font-size: 18px;
   padding: 10px var(--padding-side);
-  border: 1px solid transparent;
-  border-radius: var(--list-item-border-radius);
+  border-left: 2px solid transparent;
   box-sizing: border-box;
 }
 
 .wrapper--has-checked .title {
-  border-color: var(--background-accent-color);
+  border-color: var(--input-border-color);
 }
 
 .items {

@@ -5,9 +5,10 @@ import styles from './AppTextInput.module.css';
 type Props = {
   label: string;
   required?: boolean;
+  onInput?: (e: any) => void;
 }
 
-function AppTextInput({ label, required }: Props) {
+function AppTextInput({ label, required, onInput }: Props) {
   const wrapperClassNames = clsx([
     styles.wrapper,
     required && styles['wrapper--required'],
@@ -24,6 +25,7 @@ function AppTextInput({ label, required }: Props) {
         className={styles.input}
         name="input"
         type="text"
+        onInput={onInput}
       />
     </label>
   );
@@ -31,6 +33,7 @@ function AppTextInput({ label, required }: Props) {
 
 AppTextInput.defaultProps = {
   required: false,
+  onInput: () => ({}),
 };
 
 export default AppTextInput;

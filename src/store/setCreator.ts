@@ -15,6 +15,9 @@ export const setCreator = createSlice({
   name: 'setCreator',
   initialState,
   reducers: {
+    setTitle: (state, action: PayloadAction<string>) => {
+      state.title = action.payload;
+    },
     addNote: (state, action: PayloadAction<MusicalNote>) => {
       state.notes.push(action.payload);
     },
@@ -28,6 +31,6 @@ export const setCreator = createSlice({
   },
 });
 
-export const { addNote, removeNote } = setCreator.actions;
+export const { setTitle, addNote, removeNote } = setCreator.actions;
 
 export default setCreator.reducer;

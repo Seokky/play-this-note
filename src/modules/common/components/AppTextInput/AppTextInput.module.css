@@ -21,6 +21,7 @@
   background-color: black;
   height: 44px;
   color: white;
+  font-family: var(--font-family-main);
   font-size: 18px;
   padding: 10px;
 }

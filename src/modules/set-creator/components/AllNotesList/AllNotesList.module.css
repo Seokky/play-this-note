@@ -1,0 +1,20 @@
+.wrapper {
+  overflow: hidden;
+  height: 100%;
+}
+
+.notes {
+  background: black;
+  height: 90%;
+  overflow: auto;
+  margin-top: 4px;
+  padding: 10px;
+  border: 2px solid var(--legend-border-color);
+  border-radius: var(--legend-border-radius);
+}
+
+.title {
+  margin-bottom: 2px;
+  font-size: 18px;
+  font-weight: 700;
+}
